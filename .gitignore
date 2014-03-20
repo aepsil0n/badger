@@ -1,3 +1,4 @@
 # Python-related
 *.pyc
 __pycache__
+*.egg-info
