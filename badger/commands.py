@@ -1,6 +1,12 @@
+"""
+Conversion logic
+
+"""
+
+
 class Converter(object):
     """
-    Converter logic
+    Holds reference to a module and provides processing functionality
 
     Requires the processing module to do its work.
 
@@ -17,7 +23,6 @@ class Converter(object):
 
         """
         self.module.process(input_file, output_file)
-
 
     def series(self, frames, input_format, output_format, polling=None):
         """
