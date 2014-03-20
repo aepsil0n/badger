@@ -85,7 +85,8 @@ License
 
 *badger* is released under the `GNU General Public License 3.0
 <https://www.gnu.org/licenses/gpl-3.0.txt>`_. Copyright (c) 2014 Eduard Bopp.
-You can contact the author via email (`eduard.bopp@aepsil0n.de`_).
+You can contact the author via email (`eduard.bopp@aepsil0n.de
+<eduard.bopp@aepsil0n.de>`_).
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software
@@ -97,4 +98,4 @@ WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with
-this program.  If not, see <http://www.gnu.org/licenses/>.
+this program.  If not, see `the GNU licenses <http://www.gnu.org/licenses/>`_.
