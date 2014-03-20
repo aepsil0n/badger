@@ -24,7 +24,7 @@ Just write a Python script like this:
         return "input_{:04d}.dat".format(index)
 
     def output_file(index):
-        return "input_{:04d}.dat".format(index)
+        return "output_{:04d}.dat".format(index)
 
     def process(input_file, output_file):
         # Do some processing here...
