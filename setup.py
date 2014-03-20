@@ -16,4 +16,9 @@ if __name__ == '__main__':
         author_email='eduard.bopp@aepsil0n.de',
         packages=['badger'],
         install_requires=['docopt'],
+        entry_points={
+            'console_scripts': [
+                'badger = badger.script:main',
+            ],
+        },
     )
