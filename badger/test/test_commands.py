@@ -11,6 +11,12 @@ class Foo:
     def process(self, inp, out):
         self.data[inp] = out
 
+    def input_file(self, index):
+        return 'foo{:d}'.format(index)
+
+    def output_file(self, index):
+        return 'bar{:d}'.format(index)
+
 
 class TestConverter:
 
@@ -19,11 +25,11 @@ class TestConverter:
         self.converter = Converter(self.foo)
 
     def test_single(self):
-        self.converter.single('foo', 'bar')
-        assert_equal(self.foo.data['foo'], 'bar')
+        self.converter.single(0)
+        assert_equal(self.foo.data['foo0'], 'bar0')
 
     def test_series(self):
         frames = range(0, 3)
-        self.converter.series(frames, 'foo{:d}', 'bar{:d}')
+        self.converter.series(frames)
         for i in frames:
             assert_equal(self.foo.data['foo' + str(i)], 'bar' + str(i))

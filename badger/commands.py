@@ -3,6 +3,9 @@ Conversion logic
 
 """
 
+import time
+import os.path
+
 
 class Converter(object):
     """
@@ -15,16 +18,21 @@ class Converter(object):
     def __init__(self, module):
         self.module = module
 
-    def single(self, input_file, output_file):
+    def single(self, index, polling=None):
         """
         Process a single input file
 
         Reads data from input_file and saves result into output_file.
 
         """
+        input_file = self.module.input_file(index)
+        output_file = self.module.output_file(index)
+        if polling:
+            while not os.path.isfile(input_file):
+                time.sleep(polling)
         self.module.process(input_file, output_file)
 
-    def series(self, frames, input_format, output_format, polling=None):
+    def series(self, indices, polling=None):
         """
         Process a series of input files
 
@@ -32,10 +40,5 @@ class Converter(object):
         frames.
 
         """
-        for frame in frames:
-            input_file = input_format.format(frame)
-            output_file = output_format.format(frame)
-            if polling:
-                while not os.path.isfile(input_file):
-                    time.sleep(polling)
-            self.single(input_file, output_file)
+        for index in indices:
+            self.single(index, polling)
