@@ -7,13 +7,13 @@ directory as files are appearing.
 
 Usage:
     badger <item> <index>
-    badger <item> series <start> <stop> [<step>] [--polling] [--interval=<sec>]
+    badger <item> range <start> <stop> [<step>] [--polling] [--interval=<sec>]
     badger <item> poll [<start> <step>] [--interval=<sec>]
 
 Options:
     -h --help           Show this screen.
     --version           Show version.
-    --polling           Makes series command also poll for input files.
+    --polling           Makes range command also poll for input files.
     --interval=<sec>    Interval between polls in seconds [default: 1].
 
 """
@@ -33,7 +33,7 @@ def main():
     item = load_item(args['<item>'])
     converter = Converter(item)
 
-    if args['series']:
+    if args['range']:
         frames = range(
             int(args['<start>']),
             int(args['<stop>']),
