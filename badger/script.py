@@ -6,7 +6,7 @@ You can convert a single frame, a range of frames or poll from the input
 directory as files are appearing.
 
 Usage:
-    badger <item> single <index>
+    badger <item> <index>
     badger <item> series <start> <stop> [<step>] [--polling] [--interval=<sec>]
     badger <item> poll [<start> <step>] [--interval=<sec>]
 
@@ -44,7 +44,7 @@ def main():
             int(args['<start>'] or 0),
             int(args['<step>'] or 1))
         converter.series(poller, polling=float(args['--interval']))
-    elif args['single']:
+    else:
         index = int(args['<index>'])
         converter.single(index)
 
