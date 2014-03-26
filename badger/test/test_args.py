@@ -1,9 +1,9 @@
 from mock import Mock
-from nose.tools import raises, assert_equal
+from nose.tools import raises, assert_equal, assert_true
 from itertools import islice
 
 from badger.itertools_wrapper import count
-from badger.args import range_cmd, poll, default
+from badger.args import range_cmd, poll, default, determine_command
 
 
 class TestRange(object):
@@ -146,3 +146,8 @@ class TestDefault(object):
     def test_faulty_index(self):
         self.args['<index>'] = 'foo'
         default(self.args, self.converter)
+
+
+def test_determine_command():
+    assert_true(determine_command({'range': True}) is range_cmd)
+    assert_true(determine_command({'poll': True}) is poll)

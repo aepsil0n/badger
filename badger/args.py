@@ -26,6 +26,8 @@ def determine_command(args):
 
     """
     for cmd, fct in _all_commands.iteritems():
+        if cmd not in args:
+            continue
         if args[cmd]:
             return fct
     return default
