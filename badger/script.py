@@ -6,9 +6,9 @@ You can convert a single frame, a range of frames or poll from the input
 directory as files are appearing.
 
 Usage:
-    badger <item> <index>
     badger <item> range <start> <stop> [<step>] [--polling] [--interval=<sec>]
     badger <item> poll [<start> [<step>]] [--interval=<sec>]
+    badger <item> <index>
 
 Options:
     -h --help           Show this screen.
