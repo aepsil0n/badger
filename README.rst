@@ -3,6 +3,8 @@ badger
 
 *badger* helps you with your every-day batch work.
 
+`Explanation video <https://www.youtube.com/watch?v=hGlyFc79BUE>`_
+
 If you're processing series of data and want to do some task for a bunch of
 files in the same directory and end up writing a one-off Python script to do
 this processing, then this might be for you.
