@@ -25,12 +25,15 @@ class Converter(object):
         Reads data from input_file and saves result into output_file.
 
         """
-        input_file = self.module.input_file(index)
-        output_file = self.module.output_file(index)
-        if polling:
-            while not os.path.isfile(input_file):
-                time.sleep(polling)
-        self.module.process(input_file, output_file)
+        while True:
+            try:
+                self.module.process(index)
+                return
+            except:
+                if polling:
+                    time.sleep(polling)
+                else:
+                    raise
 
     def series(self, indices, polling=None):
         """

@@ -8,8 +8,8 @@ class Foo:
     def __init__(self):
         self.data = {}
 
-    def process(self, inp, out):
-        self.data[inp] = out
+    def process(self, index):
+        self.data[self.input_file(index)] = self.output_file(index)
 
     def input_file(self, index):
         return 'foo{:d}'.format(index)
