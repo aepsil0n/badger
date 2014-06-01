@@ -1,4 +1,7 @@
-from badger.loader import load_module, load_item, load_object
+from tempfile import NamedTemporaryFile
+from nose.tools import assert_equal
+
+from badger.loader import load_module, load_item, load_object, read_init_kwargs
 
 
 def test_load_module():
@@ -12,6 +15,20 @@ def test_load_object():
 
 
 def test_load_item():
-    import math
-    assert load_item('math') is math
-    assert load_item('math:sin') is math.sin
+    import collections
+    assert load_item('collections') is collections
+    assert type(load_item('collections:deque')) is collections.deque
+
+
+def test_read_init_kwargs():
+    with NamedTemporaryFile(delete=False) as tmp:
+        tmp.write('[foo]\nparam = 3')
+        cfgname = tmp.name
+    args = {'<item>': 'foo', '--config': cfgname}
+    init_kwargs = read_init_kwargs(args)
+    assert_equal(init_kwargs, {'param': 3})
+
+
+def test_read_init_kwargs_no_kwargs():
+    init_kwargs = read_init_kwargs({})
+    assert_equal(init_kwargs, {})

@@ -6,21 +6,23 @@ You can convert a single frame, a range of frames or poll from the input
 directory as files are appearing.
 
 Usage:
-    badger <item> range <start> <stop> [<step>] [--polling] [--interval=<sec>]
-    badger <item> poll [<start> [<step>]] [--interval=<sec>]
-    badger <item> <index>
+    badger <item> range <start> <stop> [<step>] [options]
+    badger <item> poll [<start> [<step>]] [options]
+    badger <item> <index> [options]
 
 Options:
     -h --help           Show this screen.
     --version           Show version.
     --polling           Makes range command also poll for input files.
-    --interval=<sec>    Interval between polls in seconds [default: 1].
+    --interval=<sec>    Interval between polls in seconds; only affects range
+                        and poll. [default: 1]
+    --config=<filename> Optional config file to pass options to.
 
 """
 
 from docopt import docopt
 
-from .loader import load_item
+from .loader import load_item, read_init_kwargs
 from .commands import Converter
 from .args import determine_command
 
@@ -30,7 +32,7 @@ def main():
     # Parse arguments
     args = docopt(__doc__, version='alpha')
     # Create converter
-    item = load_item(args['<item>'])
+    item = load_item(args['<item>'], read_init_kwargs(args))
     converter = Converter(item)
     # Determine and execute subcommand function
     cmd = determine_command(args)
